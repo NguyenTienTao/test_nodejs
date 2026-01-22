@@ -1,19 +1,7 @@
-import Course from "../models/Course.js";
-
 class SiteController {
     // [GET] /
-    async index(req, res, next) {
-        try {
-            const courses = await Course.find({}).lean();
-
-            if (courses.length) {
-                res.render("home", { courses });
-            } else {
-                res.json({ message: "Empty!!!" });
-            }
-        } catch (error) {
-            next(error);
-        }
+    async index(req, res) {
+        res.render("home");
     }
 
     // [GET] /search

@@ -6,6 +6,11 @@
   margin-top: 40px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: var(--line-clamp, 3);
