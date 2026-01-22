@@ -4,8 +4,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import route from "./src/routes/routes.js";
+import { connect } from "./src/config/db/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Connect DB
+connect();
 
 const app = express();
 const port = 3000;
