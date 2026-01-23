@@ -26,7 +26,23 @@ class CoursesController {
         } catch (error) {
             next(error);
         }
-        // res.send("Biết bố mày là ai không?");
+    }
+
+    // [GET] /courses/create
+    create(req, res) {
+        res.render("courses/create");
+    }
+
+    // [POST] /courses/store
+    async store(req, res, next) {
+        try {
+            const payload = req.body;
+            await Course.create(payload);
+            res.redirect("/courses");
+        } catch (error) {
+            res.send("Tạo thất bại!!!");
+            next(error);
+        }
     }
 }
 

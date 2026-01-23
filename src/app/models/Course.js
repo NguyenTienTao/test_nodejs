@@ -7,6 +7,7 @@ const Course = new Schema({
     description: String,
     image: String,
     videoId: String,
+    slug: String,
     createAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
 });
