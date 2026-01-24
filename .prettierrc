@@ -1,0 +1,11 @@
+{
+  "plugins": ["prettier-plugin-handlebars"],
+  "overrides": [
+    {
+      "files": "*.hbs",
+      "options": {
+        "parser": "glimmer"
+      }
+    }
+  ]
+}

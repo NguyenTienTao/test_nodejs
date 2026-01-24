@@ -72,6 +72,17 @@ class CoursesController {
             next(error);
         }
     }
+
+    // [DELETE] /courses/:id
+    async delete(req, res, next) {
+        try {
+            const id = req.params.id;
+            await Course.deleteOne({_id: id});
+            res.redirect("/me/stored-courses");
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 export default new CoursesController();
