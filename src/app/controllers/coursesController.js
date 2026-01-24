@@ -1,3 +1,4 @@
+import { log } from "console";
 import Course from "../models/Course.js";
 
 class CoursesController {
@@ -37,10 +38,37 @@ class CoursesController {
     async store(req, res, next) {
         try {
             const payload = req.body;
-            await Course.create(payload);
+            const course = new Course(payload);
+            await course.save();
             res.redirect("/courses");
         } catch (error) {
-            res.send("Tạo thất bại!!!");
+            console.log("Thất bại!!!");
+            next(error);
+        }
+    }
+
+    // [GET] /courses/:id/edit
+    async edit(req, res, next) {
+        try {
+            const id = req.params.id;
+            const currentCourse = await Course.findById(id).lean();
+            res.render("courses/edit", { course: currentCourse });
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    // [PATCH] /courses/:id
+    async update(req, res, next) {
+        try {
+            const payload = req.body;
+            const id = req.params.id;
+
+            const course = await Course.findById(id);
+            course.set(payload);
+            await course.save();
+            res.redirect("/me/stored-courses");
+        } catch (error) {
             next(error);
         }
     }
