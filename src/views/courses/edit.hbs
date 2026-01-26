@@ -1,7 +1,7 @@
 <div class="mt-4">
     <h3>Đăng ký khóa học</h3>
     {{#with course}}
-        <form method="post" action="/courses/{{_id}}?_method=PATCH">
+        <form method="post" action="/courses/{{_id}}?_method=PUT">
             <div class="mb-3">
                 <label for="name" class="form-label">Tên khóa học</label>
                 <input

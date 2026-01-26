@@ -58,7 +58,7 @@ class CoursesController {
         }
     }
 
-    // [PATCH] /courses/:id
+    // [PUT] /courses/:id
     async update(req, res, next) {
         try {
             const payload = req.body;
@@ -73,12 +73,34 @@ class CoursesController {
         }
     }
 
+    // [PATCH] /courses/:id/restore
+    async restore(req, res, next) {
+        try {
+            const id = req.params.id;
+            await Course.restore({_id: id});
+            res.redirect("/me/stored-courses");
+        } catch (error) {
+            next(error);
+        }
+    }
+
     // [DELETE] /courses/:id
     async delete(req, res, next) {
         try {
             const id = req.params.id;
-            await Course.deleteOne({_id: id});
+            await Course.delete({_id: id});
             res.redirect("/me/stored-courses");
+        } catch (error) {
+            next(error);
+        }
+    }
+
+     // [DELETE] /courses/:id/force
+    async deleteForce(req, res, next) {
+        try {
+            const id = req.params.id;
+            await Course.deleteOne({_id: id});
+            res.redirect("/me/restored-courses");
         } catch (error) {
             next(error);
         }
