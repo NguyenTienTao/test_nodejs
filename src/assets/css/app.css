@@ -18,4 +18,9 @@ a {
   overflow: hidden;
 }
 
+.select-actions {
+  width: 180px;
+  margin: 0 16px;
+}
+
 /*# sourceMappingURL=app.css.map */

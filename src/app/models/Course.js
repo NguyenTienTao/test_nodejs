@@ -11,6 +11,7 @@ const Course = new Schema({
     slug: String,
     createAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
+    deleteAt: Date
 });
 
 Course.plugin(MongooseDelete, { 

@@ -105,6 +105,18 @@ class CoursesController {
             next(error);
         }
     }
+
+    // [POST] /courses/handle-form-actions
+    async handleFormActions(req, res, next) {
+        switch(req.body.action) {
+            case "delete":
+                await Course.delete({ _id: { $in: req.body.courseIds }});
+                res.redirect("/me/stored-courses");
+                break;
+            default:
+                res.json({ error: "Đang lỗi đâu đó!!!" });
+        }
+    }
 }
 
 export default new CoursesController();

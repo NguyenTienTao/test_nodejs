@@ -9,7 +9,9 @@
             <th scope="col">#</th>
             <th scope="col">Tên khóa học</th>
             <th scope="col">Mô tả</th>
-            <th scope="col">Ngày tạo</th>
+            <th scope="col">Ngày xóa</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +20,7 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{name}}</td>
                 <td>{{description}}</td>
-                <td>{{createAt}}</td>
+                <td>{{deletedAt}}</td>
                 <td>
                     <button id="restored-btn" class="btn" data-id="{{_id}}">Khôi phục</button>
                 </td>
