@@ -4,10 +4,8 @@ class MeController {
     // [GET] /me/stored-courses
     async index(req, res, next) {
         try {
-            let coursesQuery =  Course.find({});
-            if (res.locals._sort.enabled) {
-                coursesQuery = coursesQuery.sort({ [req.query.column]: res.locals._sort.type });
-            }
+            const coursesQuery =  Course.find({}).sortable(req, res);
+            
             const courses = await coursesQuery.lean();
             res.render("me/stored-courses", { courses });
         } catch (error) {

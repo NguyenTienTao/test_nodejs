@@ -14,6 +14,14 @@ const Course = new Schema({
     deleteAt: Date
 });
 
+Course.query.sortable = function(req, res) {
+    if (res.locals._sort.enabled) {
+        const invalidType = ["asc", "desc"].includes(res.locals._sort.type)
+        this.sort({ [req.query.column]: invalidType ? res.locals._sort.type : "desc" });
+    }
+    return this;
+}
+
 Course.plugin(MongooseDelete, { 
     deletedAt : true,
     overrideMethods: 'all'
